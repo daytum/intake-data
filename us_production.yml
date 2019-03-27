@@ -48,9 +48,9 @@ sources:
         type: str
         allowed: ["ND", "NM", "TX"]
         sources:
-  csv:
-    args:
-      path: csv.yml
-    description: ''
-    driver: intake.catalog.local.YAMLFileCatalog
-    metadata: {}
+#  csv:
+#    args:
+#      path: csv.yml
+#    description: ''
+#    driver: intake.catalog.local.YAMLFileCatalog
+#    metadata: {}

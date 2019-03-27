@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 sources:
-  by_state:
+  by_state_csv:
     args:
       urlpath: '{{ CATALOG_DIR }}/data/{{state}}_production.csv' 
       csv_kwargs:
