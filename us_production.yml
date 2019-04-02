@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 sources:
-  by_state:
+  production_by_state:
     args:
       sql_expr: SELECT date,api,volume_oil_formation_bbls,volume_gas_formation_mcf,volume_water_formation_bbls FROM {{schema}}.production_all
         WHERE state='{{state}}'
@@ -47,7 +47,6 @@ sources:
         description: "State to query production"
         type: str
         allowed: ["ND", "NM", "TX"]
-        sources:
 #  csv:
 #    args:
 #      path: csv.yml

@@ -1,10 +1,10 @@
 # meta.yaml
 package:
-  version: '0.0.2'
+  version: '0.0.3'
   name: 'data'
 
 source:
-  git_rev: v0.0.2
+  git_rev: v0.0.3
   git_url: https://github.com/daytum/intake-data
 
 build:
@@ -14,10 +14,12 @@ build:
 requirements:
   run:
     - intake
+    - intake-sql
+    - intake-parquet
   build: []
 
 about:
   description: Production history from US oil and gas wells
   license: Apache v2.0
-  license_family: MIT
+  license_family: Apache
   summary: Production history from US oil and gas wells
