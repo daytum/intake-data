@@ -20,7 +20,42 @@ sources:
         parse_dates:
         - date
       uri: postgresql://{{bazean_postgres_username}}:{{bazean_postgres_password}}@{{subdomain}}.bazean.com:5432/db
-    description: 'Production History For All Wells in {{state}}'
+    description: 'Production history for all wells in a user parameter given state.'
+    driver: intake_sql.intake_sql.SQLSource
+    cache:
+    - argkey: sql_expr 
+      type: file
+    metadata: {}
+    parameters:
+      bazean_postgres_username:
+        description: "PostgresSQL username for accessing Bazean database"
+        type: str
+        default: "env(BAZEAN_POSTGRES_USERNAME)"
+      bazean_postgres_password:
+        description: "PostgresSQL password for accessing Bazean database"
+        type: str
+        default: "env(BAZEAN_POSTGRES_PASSWORD)"
+      subdomain:
+        description: "Bazean PostgresSQL subdomain name"
+        type: str
+        default: "premium-west"
+      schema:
+        description: "Bazean PostgresSQL database schema"
+        type: str
+        default: "public"
+      state:
+        description: "State to query production"
+        type: str
+        allowed: ['OH', 'MI', 'WV', 'CA', 'ND', 'BC', 'KS', 'MT', 'UT', 'PA', 'AR', 'LA', 'WY', 'OK', 'TX', 'CO', 'NM', 'GM']
+  production_by_api:
+    args:
+      sql_expr: SELECT date,volume_oil_formation_bbls,volume_gas_formation_mcf,volume_water_formation_bbls FROM {{schema}}.production_all
+        WHERE api='{{api}}'
+      sql_kwargs:
+        parse_dates:
+        - date
+      uri: postgresql://{{bazean_postgres_username}}:{{bazean_postgres_password}}@{{subdomain}}.bazean.com:5432/db
+    description: 'Production history for a well given by API number'
     driver: intake_sql.intake_sql.SQLSource
     cache:
     - argkey: sql_expr 
@@ -38,18 +73,11 @@ sources:
       subdomain:
         description: "Bazean PostgresSQL subdomain name"
         type: str
-        default: "premium"
+        default: "premium-west"
       schema:
         description: "Bazean PostgresSQL database schema"
         type: str
         default: "public"
       state:
-        description: "State to query production"
+        description: "API to query production"
         type: str
-        allowed: ["ND", "NM", "TX"]
-#  csv:
-#    args:
-#      path: csv.yml
-#    description: ''
-#    driver: intake.catalog.local.YAMLFileCatalog
-#    metadata: {}
