@@ -19,7 +19,7 @@ sources:
       sql_kwargs:
         parse_dates:
         - date
-      uri: postgresql://{{bazean_postgres_username}}:{{bazean_postgres_password}}@{{subdomain}}.bazean.com:5432/db
+      uri: postgresql://{{bazean_postgres_username}}:{{bazean_postgres_password}}@{{subdomain}}.bazean.com:5432/daytum
     description: 'Production history for all wells in a user parameter given state.'
     driver: intake_sql.intake_sql.SQLSource
     cache:
@@ -38,7 +38,7 @@ sources:
       subdomain:
         description: "Bazean PostgresSQL subdomain name"
         type: str
-        default: "premium-west"
+        default: "daytum-server"
       schema:
         description: "Bazean PostgresSQL database schema"
         type: str
@@ -54,7 +54,7 @@ sources:
       sql_kwargs:
         parse_dates:
         - date
-      uri: postgresql://{{bazean_postgres_username}}:{{bazean_postgres_password}}@{{subdomain}}.bazean.com:5432/db
+      uri: postgresql://{{bazean_postgres_username}}:{{bazean_postgres_password}}@{{subdomain}}.bazean.com:5432/daytum
     description: 'Production history for a well given by API number'
     driver: intake_sql.intake_sql.SQLSource
     cache:
@@ -73,11 +73,11 @@ sources:
       subdomain:
         description: "Bazean PostgresSQL subdomain name"
         type: str
-        default: "premium-west"
+        default: "daytum-server"
       schema:
         description: "Bazean PostgresSQL database schema"
         type: str
         default: "public"
-      state:
+      api:
         description: "API to query production"
         type: str
