@@ -15,7 +15,7 @@ sources:
   tickers_by_state:
     args:
       sql_expr: SELECT parent_ticker FROM {{schema}}.well_all WHERE state='{{state}}'
-      uri: postgresql://{{bazean_postgres_username}}:{{bazean_postgres_password}}@{{subdomain}}.bazean.com:5432/daytum
+      uri: postgresql://{{bazean_postgres_username}}:{{bazean_postgres_password}}@{{subdomain}}.bazean.com:5432/{database}
     description: 'A list of all operators in a given state listed by stock ticker'
     driver: intake_sql.intake_sql.SQLSource
     metadata: {}
@@ -32,6 +32,10 @@ sources:
         description: "Bazean PostgresSQL subdomain name"
         type: str
         default: "daytum-server"
+      database:
+        description: "Bazean PostgresSQL database name"
+        type: str
+        default: "daytum"
       schema:
         description: "Bazean PostgresSQL database schema"
         type: str
@@ -43,7 +47,7 @@ sources:
   well_location_by_ticker_and_state:
     args:
       sql_expr: SELECT api,latitude_surface_hole,longitude_surface_hole FROM {{schema}}.well_all WHERE state='{{state}}' AND parent_ticker='{{ticker}}'
-      uri: postgresql://{{bazean_postgres_username}}:{{bazean_postgres_password}}@{{subdomain}}.bazean.com:5432/daytum
+      uri: postgresql://{{bazean_postgres_username}}:{{bazean_postgres_password}}@{{subdomain}}.bazean.com:5432/{database}
     description: 'Latitude and longitude for wells in given state and ticker'
     driver: intake_sql.intake_sql.SQLSource
     metadata: {}
@@ -60,6 +64,10 @@ sources:
         description: "Bazean PostgresSQL subdomain name"
         type: str
         default: "daytum-server"
+      database:
+        description: "Bazean PostgresSQL database name"
+        type: str
+        default: "daytum"
       schema:
         description: "Bazean PostgresSQL database schema"
         type: str
@@ -74,7 +82,7 @@ sources:
   well_location_by_api:
     args:
       sql_expr: SELECT latitude_surface_hole,longitude_surface_hole FROM {{schema}}.well_all WHERE api='{{api}}'
-      uri: postgresql://{{bazean_postgres_username}}:{{bazean_postgres_password}}@{{subdomain}}.bazean.com:5432/daytum
+      uri: postgresql://{{bazean_postgres_username}}:{{bazean_postgres_password}}@{{subdomain}}.bazean.com:5432/{database}
     description: 'Latitude and longitude for well with given API number'
     driver: intake_sql.intake_sql.SQLSource
     metadata: {}
@@ -91,6 +99,10 @@ sources:
         description: "Bazean PostgresSQL subdomain name"
         type: str
         default: "daytum-server"
+      database:
+        description: "Bazean PostgresSQL database name"
+        type: str
+        default: "daytum"
       schema:
         description: "Bazean PostgresSQL database schema"
         type: str
