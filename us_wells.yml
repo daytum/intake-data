@@ -46,7 +46,8 @@ sources:
         allowed: ['OH', 'MI', 'WV', 'CA', 'ND', 'BC', 'KS', 'MT', 'UT', 'PA', 'AR', 'LA', 'WY', 'OK', 'TX', 'CO', 'NM', 'GM']
       limit:
         description: "Query limit"
-        default:  ALL
+        type: int
+        default: 9223372036854775807
   well_location_by_ticker_and_state:
     args:
       sql_expr: SELECT api,latitude_surface_hole,longitude_surface_hole FROM {{schema}}.well_all WHERE state='{{state}}' AND parent_ticker='{{ticker}}' LIMIT {{limit}}
@@ -84,7 +85,8 @@ sources:
         type: str
       limit:
         description: "Query limit"
-        default:  ALL
+        type: int
+        default: 9223372036854775807
   well_location_by_api:
     args:
       sql_expr: SELECT latitude_surface_hole,longitude_surface_hole FROM {{schema}}.well_all WHERE api='{{api}}' LIMIT {{limit}}
@@ -118,4 +120,5 @@ sources:
         type: int
       limit:
         description: "Query limit"
-        default: ALL
+        type: int
+        default: 9223372036854775807
