@@ -19,7 +19,7 @@ sources:
       sql_kwargs:
         parse_dates:
         - date
-      uri: postgresql://{{bazean_postgres_username}}:{{bazean_postgres_password}}@{{subdomain}}.bazean.com:5432/{database}
+      uri: postgresql://{{bazean_postgres_username}}:{{bazean_postgres_password}}@{{subdomain}}.bazean.com:5432/{{database}}
     description: 'Production history for all wells in a user parameter given state.'
     driver: intake_sql.intake_sql.SQLSource
     cache:
@@ -58,7 +58,7 @@ sources:
       sql_kwargs:
         parse_dates:
         - date
-      uri: postgresql://{{bazean_postgres_username}}:{{bazean_postgres_password}}@{{subdomain}}.bazean.com:5432/{database}
+      uri: postgresql://{{bazean_postgres_username}}:{{bazean_postgres_password}}@{{subdomain}}.bazean.com:5432/{{database}}
     description: 'Production history for a well given by API number'
     driver: intake_sql.intake_sql.SQLSource
     cache:
