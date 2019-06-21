@@ -1,14 +1,14 @@
 # meta.yaml
 package:
-  version: '0.0.8'
+  version: '0.0.9'
   name: 'data'
 
 source:
-  git_rev: v0.0.8
+  git_rev: v0.0.9
   git_url: https://github.com/daytum/intake-data
 
 build:
-  number: 1
+  number: 0
   noarch: generic
 
 requirements:

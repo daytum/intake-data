@@ -14,7 +14,7 @@
 sources:
   tickers_by_state:
     args:
-      sql_expr: SELECT parent_ticker FROM {{schema}}.well_all WHERE state='{{state}}'
+      sql_expr: SELECT parent_ticker FROM {{schema}}.well_all WHERE state='{{state}}' LIMIT='{{limit}}'
       uri: postgresql://{{bazean_postgres_username}}:{{bazean_postgres_password}}@{{subdomain}}.bazean.com:5432/{{database}}
     description: 'A list of all operators in a given state listed by stock ticker'
     driver: intake_sql.intake_sql.SQLSource
@@ -44,9 +44,13 @@ sources:
         description: "State to query tickers"
         type: str
         allowed: ['OH', 'MI', 'WV', 'CA', 'ND', 'BC', 'KS', 'MT', 'UT', 'PA', 'AR', 'LA', 'WY', 'OK', 'TX', 'CO', 'NM', 'GM']
+      limit:
+        description: "Query limit"
+        type: str
+        default: 'ALL'
   well_location_by_ticker_and_state:
     args:
-      sql_expr: SELECT api,latitude_surface_hole,longitude_surface_hole FROM {{schema}}.well_all WHERE state='{{state}}' AND parent_ticker='{{ticker}}'
+      sql_expr: SELECT api,latitude_surface_hole,longitude_surface_hole FROM {{schema}}.well_all WHERE state='{{state}}' AND parent_ticker='{{ticker}}' LIMIT='{{limit}}'
       uri: postgresql://{{bazean_postgres_username}}:{{bazean_postgres_password}}@{{subdomain}}.bazean.com:5432/{{database}}
     description: 'Latitude and longitude for wells in given state and ticker'
     driver: intake_sql.intake_sql.SQLSource
@@ -79,9 +83,13 @@ sources:
       ticker:
         description: "Ticker to get wells in state"
         type: str
+      limit:
+        description: "Query limit"
+        type: str
+        default: 'ALL'
   well_location_by_api:
     args:
-      sql_expr: SELECT latitude_surface_hole,longitude_surface_hole FROM {{schema}}.well_all WHERE api='{{api}}'
+      sql_expr: SELECT latitude_surface_hole,longitude_surface_hole FROM {{schema}}.well_all WHERE api='{{api}}' LIMIT='{{limit}}'
       uri: postgresql://{{bazean_postgres_username}}:{{bazean_postgres_password}}@{{subdomain}}.bazean.com:5432/{{database}}
     description: 'Latitude and longitude for well with given API number'
     driver: intake_sql.intake_sql.SQLSource
@@ -110,3 +118,7 @@ sources:
       api:
         description: "API number to get latitude and longitude"
         type: int
+      limit:
+        description: "Query limit"
+        type: str
+        default: 'ALL'

@@ -14,7 +14,7 @@
 sources:
   production_by_state:
     args:
-      sql_expr: SELECT date,api,volume_oil_formation_bbls,volume_gas_formation_mcf,volume_water_formation_bbls FROM {{schema}}.production_all
+      sql_expr: SELECT date,api,volume_oil_formation_bbls,volume_gas_formation_mcf,volume_water_formation_bbls FROM {{schema}}.production_all LIMIT='{{limit}}'
         WHERE state='{{state}}'
       sql_kwargs:
         parse_dates:
@@ -51,10 +51,14 @@ sources:
         description: "State to query production"
         type: str
         allowed: ['OH', 'MI', 'WV', 'CA', 'ND', 'BC', 'KS', 'MT', 'UT', 'PA', 'AR', 'LA', 'WY', 'OK', 'TX', 'CO', 'NM', 'GM']
+      limit:
+        description: "Query limit"
+        type: str
+        default: 'ALL'
   production_by_api:
     args:
       sql_expr: SELECT date,volume_oil_formation_bbls,volume_gas_formation_mcf,volume_water_formation_bbls FROM {{schema}}.production_all
-        WHERE api='{{api}}'
+        WHERE api='{{api}}' LIMIT='{{limit}}'
       sql_kwargs:
         parse_dates:
         - date
@@ -89,3 +93,7 @@ sources:
       api:
         description: "API to query production"
         type: str
+      limit:
+        description: "Query limit"
+        type: str
+        default: 'ALL'
