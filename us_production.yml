@@ -52,8 +52,7 @@ sources:
         allowed: ['OH', 'MI', 'WV', 'CA', 'ND', 'BC', 'KS', 'MT', 'UT', 'PA', 'AR', 'LA', 'WY', 'OK', 'TX', 'CO', 'NM', 'GM']
       limit:
         description: "Query limit"
-        type: int
-        default: 9223372036854775807
+        default: ALL
   production_by_api:
     args:
       sql_expr: SELECT date,volume_oil_formation_bbls,volume_gas_formation_mcf,volume_water_formation_bbls FROM {{schema}}.production_all WHERE api='{{api}}' LIMIT {{limit}}

@@ -48,7 +48,7 @@ sources:
         description: "Query limit"
         type: int
         default: 9223372036854775807
-  well_locations_by_ticker_and_state:
+  well_location_by_ticker_and_state:
     args:
       sql_expr: SELECT api,latitude_surface_hole,longitude_surface_hole FROM {{schema}}.well_all WHERE state='{{state}}' LIMIT {{limit}}
       uri: postgresql://{{bazean_postgres_username}}:{{bazean_postgres_password}}@{{subdomain}}.bazean.com:5432/{{database}}
@@ -85,8 +85,7 @@ sources:
         type: str
       limit:
         description: "Query limit"
-        type: int
-        default: 9223372036854775807
+        default:  ALL
   well_location_by_api:
     args:
       sql_expr: SELECT latitude_surface_hole,longitude_surface_hole FROM {{schema}}.well_all WHERE api='{{api}}' LIMIT {{limit}}
