@@ -122,3 +122,42 @@ sources:
         description: "Query limit"
         type: int
         default: 9223372036854775807
+  well_columns:
+    args:
+      sql_expr: SELECT {{columns}} FROM {{schema}}.well_all WHERE {{where}} LIMIT {{limit}}
+      uri: postgresql://{{bazean_postgres_username}}:{{bazean_postgres_password}}@{{subdomain}}.bazean.com:5432/{{database}}
+    description: 'Generic Postgres query to SELECT columns from table well_all with supplied WHERE statement'
+    driver: intake_sql.intake_sql.SQLSource
+    metadata: {}
+    parameters:
+      bazean_postgres_username:
+        description: "PostgresSQL username for accessing Bazean Database"
+        type: str
+        default: "env(BAZEAN_POSTGRES_USERNAME)"
+      bazean_postgres_password:
+        description: "PostgresSQL password for accessing Bazean Database"
+        type: str
+        default: "env(BAZEAN_POSTGRES_PASSWORD)"
+      subdomain:
+        description: "Bazean PostgresSQL subdomain name"
+        type: str
+        default: "daytum-server"
+      database:
+        description: "Bazean PostgresSQL database name"
+        type: str
+        default: "daytum"
+      schema:
+        description: "Bazean PostgresSQL database schema"
+        type: str
+        default: "public"
+      columns:
+        description: "Postgres table Columns to SELECT"
+        type: str
+        default: "*"
+      where:
+        description: "Postgres WHERE statement"
+        type: str
+      limit:
+        description: "Query limit"
+        type: int
+        default: 9223372036854775807

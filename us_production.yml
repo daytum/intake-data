@@ -14,8 +14,7 @@
 sources:
   production_by_state:
     args:
-      sql_expr: SELECT date,api,volume_oil_formation_bbls,volume_gas_formation_mcf,volume_water_formation_bbls FROM {{schema}}.production_all LIMIT {{limit}}
-        WHERE state='{{state}}'
+      sql_expr: SELECT date,api,volume_oil_formation_bbls,volume_gas_formation_mcf,volume_water_formation_bbls FROM {{schema}}.production_all WHERE state='{{state}}' LIMIT {{limit}}
       sql_kwargs:
         parse_dates:
         - date
@@ -57,8 +56,7 @@ sources:
         default: 9223372036854775807
   production_by_api:
     args:
-      sql_expr: SELECT date,volume_oil_formation_bbls,volume_gas_formation_mcf,volume_water_formation_bbls FROM {{schema}}.production_all
-        WHERE api='{{api}}' LIMIT {{limit}}
+      sql_expr: SELECT date,volume_oil_formation_bbls,volume_gas_formation_mcf,volume_water_formation_bbls FROM {{schema}}.production_all WHERE api='{{api}}' LIMIT {{limit}}
       sql_kwargs:
         parse_dates:
         - date
@@ -92,6 +90,48 @@ sources:
         default: "public"
       api:
         description: "API to query production"
+        type: str
+      limit:
+        description: "Query limit"
+        type: int
+        default: 9223372036854775807
+  production_columns:
+    args:
+      sql_expr: SELECT {{columns}} FROM {{schema}}.production_all WHERE {{where}} LIMIT {{limit}}
+      uri: postgresql://{{bazean_postgres_username}}:{{bazean_postgres_password}}@{{subdomain}}.bazean.com:5432/{{database}}
+    description: 'Generic Postgres query to SELECT columns from table production_all with supplied WHERE statement'
+    driver: intake_sql.intake_sql.SQLSource
+    cache:
+    - argkey: sql_expr 
+      type: file
+    metadata: {}
+    parameters:
+      bazean_postgres_username:
+        description: "PostgresSQL username for accessing Bazean Database"
+        type: str
+        default: "env(BAZEAN_POSTGRES_USERNAME)"
+      bazean_postgres_password:
+        description: "PostgresSQL password for accessing Bazean Database"
+        type: str
+        default: "env(BAZEAN_POSTGRES_PASSWORD)"
+      subdomain:
+        description: "Bazean PostgresSQL subdomain name"
+        type: str
+        default: "daytum-server"
+      database:
+        description: "Bazean PostgresSQL database name"
+        type: str
+        default: "daytum"
+      schema:
+        description: "Bazean PostgresSQL database schema"
+        type: str
+        default: "public"
+      columns:
+        description: "Columns to SELECT from production_all table"
+        type: str
+        default: "*" 
+      where:
+        description: "Postgres WHERE statement"
         type: str
       limit:
         description: "Query limit"
