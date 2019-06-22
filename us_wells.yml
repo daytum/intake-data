@@ -48,11 +48,86 @@ sources:
         description: "Query limit"
         type: int
         default: 9223372036854775807
-  well_location_by_ticker_and_state:
+  producing_tickers_by_state:
     args:
-      sql_expr: SELECT api,latitude_surface_hole,longitude_surface_hole FROM {{schema}}.well_all WHERE state='{{state}}' AND parent_ticker='{{ticker}}' LIMIT {{limit}}
+      sql_expr: SELECT parent_ticker FROM {{schema}}.well_all WHERE state='{{state}}' AND (cum_water>0 OR cum_gas>0 OR cum_oil>0) LIMIT {{limit}}
       uri: postgresql://{{bazean_postgres_username}}:{{bazean_postgres_password}}@{{subdomain}}.bazean.com:5432/{{database}}
-    description: 'Latitude and longitude for wells in given state and ticker'
+    description: 'A list of all operators in a given state listed by stock ticker.  Excluses tickers associated with wells that have no production data'
+    driver: intake_sql.intake_sql.SQLSource
+    metadata: {}
+    parameters:
+      bazean_postgres_username:
+        description: "PostgresSQL username for accessing Bazean Database"
+        type: str
+        default: "env(BAZEAN_POSTGRES_USERNAME)"
+      bazean_postgres_password:
+        description: "PostgresSQL password for accessing Bazean Database"
+        type: str
+        default: "env(BAZEAN_POSTGRES_PASSWORD)"
+      subdomain:
+        description: "Bazean PostgresSQL subdomain name"
+        type: str
+        default: "daytum-server"
+      database:
+        description: "Bazean PostgresSQL database name"
+        type: str
+        default: "daytum"
+      schema:
+        description: "Bazean PostgresSQL database schema"
+        type: str
+        default: "public"
+      state:
+        description: "State to query tickers"
+        type: str
+        allowed: ['OH', 'MI', 'WV', 'CA', 'ND', 'BC', 'KS', 'MT', 'UT', 'PA', 'AR', 'LA', 'WY', 'OK', 'TX', 'CO', 'NM', 'GM']
+      limit:
+        description: "Query limit"
+        type: int
+        default: 9223372036854775807
+  producing_well_locations_by_ticker_and_state:
+    args:
+      sql_expr: SELECT api,latitude_surface_hole,longitude_surface_hole FROM {{schema}}.well_all WHERE state='{{state}}' AND parent_ticker='{{ticker}}' AND (cum_water>0 OR cum_gas>0 OR cum_oil>0) LIMIT {{limit}}
+      uri: postgresql://{{bazean_postgres_username}}:{{bazean_postgres_password}}@{{subdomain}}.bazean.com:5432/{{database}}
+    description: 'Latitude and longitude for wells in given state and ticker.  Excludes wells that have no production/injection data'
+    driver: intake_sql.intake_sql.SQLSource
+    metadata: {}
+    parameters:
+      bazean_postgres_username:
+        description: "PostgresSQL username for accessing Bazean Database"
+        type: str
+        default: "env(BAZEAN_POSTGRES_USERNAME)"
+      bazean_postgres_password:
+        description: "PostgresSQL password for accessing Bazean Database"
+        type: str
+        default: "env(BAZEAN_POSTGRES_PASSWORD)"
+      subdomain:
+        description: "Bazean PostgresSQL subdomain name"
+        type: str
+        default: "daytum-server"
+      database:
+        description: "Bazean PostgresSQL database name"
+        type: str
+        default: "daytum"
+      schema:
+        description: "Bazean PostgresSQL database schema"
+        type: str
+        default: "public"
+      state:
+        description: "State to get wells"
+        type: str
+        allowed: ['OH', 'MI', 'WV', 'CA', 'ND', 'BC', 'KS', 'MT', 'UT', 'PA', 'AR', 'LA', 'WY', 'OK', 'TX', 'CO', 'NM', 'GM']
+      ticker:
+        description: "Ticker to get wells in state"
+        type: str
+      limit:
+        description: "Query limit"
+        type: int
+        default: 9223372036854775807
+  well_locations_by_ticker_and_state:
+    args:
+      sql_expr: SELECT api,latitude_surface_hole,longitude_surface_hole FROM {{schema}}.well_all WHERE state='{{state}}' LIMIT {{limit}}
+      uri: postgresql://{{bazean_postgres_username}}:{{bazean_postgres_password}}@{{subdomain}}.bazean.com:5432/{{database}}
+    description: 'Latitude and longitude for wells in given state and ticker.'
     driver: intake_sql.intake_sql.SQLSource
     metadata: {}
     parameters:
