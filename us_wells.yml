@@ -85,7 +85,8 @@ sources:
         type: str
       limit:
         description: "Query limit"
-        default:  ALL
+        type: int
+        default: 9223372036854775807
   well_location_by_api:
     args:
       sql_expr: SELECT latitude_surface_hole,longitude_surface_hole FROM {{schema}}.well_all WHERE api='{{api}}' LIMIT {{limit}}
