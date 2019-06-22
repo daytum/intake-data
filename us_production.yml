@@ -21,9 +21,6 @@ sources:
       uri: postgresql://{{bazean_postgres_username}}:{{bazean_postgres_password}}@{{subdomain}}.bazean.com:5432/{{database}}
     description: 'Production history for all wells in a user parameter given state.'
     driver: intake_sql.intake_sql.SQLSource
-    cache:
-    - argkey: sql_expr 
-      type: file
     metadata: {}
     parameters:
       bazean_postgres_username:
@@ -133,6 +130,42 @@ sources:
       where:
         description: "Postgres WHERE statement"
         type: str
+      limit:
+        description: "Query limit"
+        type: int
+        default: 9223372036854775807
+  apis_with_production_data_by_state:
+    args:
+      sql_expr: SELECT DISTINCT api FROM {{schema}}.production_all WHERE state='{{state}}' LIMIT {{limit}}
+      uri: postgresql://{{bazean_postgres_username}}:{{bazean_postgres_password}}@{{subdomain}}.bazean.com:5432/{{database}}
+    description: 'Distinct APIs selected by state where there is production data in production_all.'
+    driver: intake_sql.intake_sql.SQLSource
+    metadata: {}
+    parameters:
+      bazean_postgres_username:
+        description: "PostgresSQL username for accessing Bazean database"
+        type: str
+        default: "env(BAZEAN_POSTGRES_USERNAME)"
+      bazean_postgres_password:
+        description: "PostgresSQL password for accessing Bazean database"
+        type: str
+        default: "env(BAZEAN_POSTGRES_PASSWORD)"
+      subdomain:
+        description: "Bazean PostgresSQL subdomain name"
+        type: str
+        default: "daytum-server"
+      database:
+        description: "Bazean PostgresSQL database name"
+        type: str
+        default: "daytum"
+      schema:
+        description: "Bazean PostgresSQL database schema"
+        type: str
+        default: "public"
+      state:
+        description: "State to query production"
+        type: str
+        allowed: ['OH', 'MI', 'WV', 'CA', 'ND', 'BC', 'KS', 'MT', 'UT', 'PA', 'AR', 'LA', 'WY', 'OK', 'TX', 'CO', 'NM', 'GM']
       limit:
         description: "Query limit"
         type: int
