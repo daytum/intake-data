@@ -31,3 +31,21 @@ sources:
               y: permeability
               width: 800
               height: 600
+  2D_MV_200wells:
+    args:
+      urlpath: '{{ CATALOG_DIR }}/data/2D_MV_200wells.csv' 
+    description: 'Facies threshold, porosity and permeability from 200 samples'
+    driver: intake.source.csv.CSVSource
+    metadata: 
+      fields:
+          facies_threshold_0.3:
+              label: 'Facies Threshold 0.3'
+          porosity:
+              label: 'Porosity'
+          permeability:
+              label: 'Permeability'
+              unit: 'mD'
+          facies_threshold_0.3:
+              label: 'Facies Threshold 0.3'
+          acoustic_impedance:
+              label: 'Acoustic Impedance'
