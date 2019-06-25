@@ -53,3 +53,9 @@ sources:
     description: 'Multivariate data from 1000 wells'
     driver: intake.source.csv.CSVSource
     metadata: {}
+  Density_Por_data:
+    args:
+      urlpath: '{{ CATALOG_DIR }}/data/Density_Por_data.csv' 
+    description: 'Density and porosity data from 105 wells'
+    driver: intake.source.csv.CSVSource
+    metadata: {}
