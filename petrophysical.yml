@@ -47,3 +47,9 @@ sources:
               unit: 'mD'
           acoustic_impedance:
               label: 'Acoustic Impedance'
+  unconv_MV:
+    args:
+      urlpath: '{{ CATALOG_DIR }}/data/unconv_MV.csv' 
+    description: 'Multivariate data from 1000 wells'
+    driver: intake.source.csv.CSVSource
+    metadata: {}
