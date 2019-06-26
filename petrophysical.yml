@@ -59,3 +59,9 @@ sources:
     description: 'Density and porosity data from 105 wells'
     driver: intake.source.csv.CSVSource
     metadata: {}
+  sample_data_biased:
+    args:
+      urlpath: '{{ CATALOG_DIR }}/data/sample_data_biased.csv' 
+    description: ''
+    driver: intake.source.csv.CSVSource
+    metadata: {}
