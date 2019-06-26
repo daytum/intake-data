@@ -65,3 +65,9 @@ sources:
     description: ''
     driver: intake.source.csv.CSVSource
     metadata: {}
+  sample_data_12:
+    args:
+      urlpath: '{{ CATALOG_DIR }}/data/sample_data_12.csv' 
+    description: 'Clone of GeostatsGuy's 12_sample_data.csv'
+    driver: intake.source.csv.CSVSource
+    metadata: {}
