@@ -89,3 +89,9 @@ sources:
     description: 'Clone of GeostatsGuys 12_sample_data.csv'
     driver: intake.source.csv.CSVSource
     metadata: {}
+  AI_grid:
+    args:
+      urlpath: 'https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/AI_grid.csv' 
+    description: 'GeostatsGuys AI_grid.csv siesmic'
+    driver: intake.source.csv.CSVSource
+    metadata: {}
