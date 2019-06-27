@@ -1,10 +1,10 @@
 # meta.yaml
 package:
-  version: '0.0.30'
+  version: '0.0.31'
   name: 'data'
 
 source:
-  git_rev: v0.0.30
+  git_rev: v0.0.31
   git_url: https://github.com/daytum/intake-data
 
 build:

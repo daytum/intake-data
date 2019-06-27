@@ -14,7 +14,7 @@
 sources:
   AI_grid:
     args:
-      urlpath: '{{ CATALOG_DIR }}/data/AI_grid.npy' 
+      path: '{{ CATALOG_DIR }}/data/AI_grid.csv' 
     description: 'GeostatsGuys AI_grid.csv siesmic'
     driver: intake.source.npy.NPySource
     metadata: {}
