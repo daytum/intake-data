@@ -13,3 +13,4 @@ cp $RECIPE_DIR/data/sample_data_12.csv $PREFIX/share/intake/data/
 cp $RECIPE_DIR/us_production.yml $PREFIX/share/intake/
 cp $RECIPE_DIR/us_wells.yml $PREFIX/share/intake/
 cp $RECIPE_DIR/petrophysical.yml $PREFIX/share/intake/
+cp $RECIPE_DIR/siesmic.yml $PREFIX/share/intake/
