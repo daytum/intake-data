@@ -14,7 +14,7 @@
 sources:
   AI_grid:
     args:
-      urlpath: 'https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/AI_grid.csv' 
+      urlpath: '{{ CATALOG_DIR }}/data/AI_grid.txt' 
     description: 'GeostatsGuys AI_grid.csv siesmic'
     driver: intake.source.textfiles.TextFilesSource
     metadata: {}
