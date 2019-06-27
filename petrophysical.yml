@@ -53,6 +53,12 @@ sources:
     description: 'Multivariate data from 1000 wells'
     driver: intake.source.csv.CSVSource
     metadata: {}
+  unconv_MV_v4:
+    args:
+      urlpath: '{{ CATALOG_DIR }}/data/unconv_MV_v4.csv' 
+    description: 'Clone of GeostatsGuys unconv_MV_v4 dataset'
+    driver: intake.source.csv.CSVSource
+    metadata: {}
   Density_Por_data:
     args:
       urlpath: '{{ CATALOG_DIR }}/data/Density_Por_data.csv' 
@@ -63,6 +69,12 @@ sources:
     args:
       urlpath: '{{ CATALOG_DIR }}/data/sample_data_biased.csv' 
     description: ''
+    driver: intake.source.csv.CSVSource
+    metadata: {}
+  sample_data_MV_biased:
+    args:
+      urlpath: '{{ CATALOG_DIR }}/data/sample_data_MV_biased.csv' 
+    description: 'Clone of GeostatsGuys sample_data_MV_biased'
     driver: intake.source.csv.CSVSource
     metadata: {}
   sample_data_12:
