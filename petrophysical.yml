@@ -77,6 +77,12 @@ sources:
     description: 'Clone of GeostatsGuys sample_data_MV_biased'
     driver: intake.source.csv.CSVSource
     metadata: {}
+  sample_data:
+    args:
+      urlpath: '{{ CATALOG_DIR }}/data/sample_data.csv' 
+    description: 'Clone of GeostatsGuys sample_data'
+    driver: intake.source.csv.CSVSource
+    metadata: {}
   sample_data_12:
     args:
       urlpath: '{{ CATALOG_DIR }}/data/sample_data_12.csv' 

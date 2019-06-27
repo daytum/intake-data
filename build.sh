@@ -6,6 +6,7 @@ cp $RECIPE_DIR/data/2D_MV_200wells.csv $PREFIX/share/intake/data/
 cp $RECIPE_DIR/data/unconv_MV.csv $PREFIX/share/intake/data/
 cp $RECIPE_DIR/data/unconv_MV_v4.csv $PREFIX/share/intake/data/
 cp $RECIPE_DIR/data/Density_Por_data.csv $PREFIX/share/intake/data/
+cp $RECIPE_DIR/data/sample_data.csv $PREFIX/share/intake/data/
 cp $RECIPE_DIR/data/sample_data_biased.csv $PREFIX/share/intake/data/
 cp $RECIPE_DIR/data/sample_data_MV_biased.csv $PREFIX/share/intake/data/
 cp $RECIPE_DIR/data/sample_data_12.csv $PREFIX/share/intake/data/
