@@ -170,3 +170,45 @@ sources:
         description: "Query limit"
         type: int
         default: 9223372036854775807
+  production_by_ticker_and_state:
+    args:
+      sql_expr: SELECT pa.api,pa.date,pa.volume_oil_formation_bbls,pa.volume_gas_formation_mcf,pa.volume_water_formation_bbls,wa.longitude_surface_hole,wa.latitude_surface_hole FROM {{schema}}.production_all pa LEFT JOIN {{schema}}.well_all wa ON pa.api = wa.api WHERE (wa.state='{{state}}' AND wa.parent_ticker='{{ticker}}') LIMIT {{limit}}
+      sql_kwargs:
+        parse_dates:
+        - date
+      uri: postgresql://{{bazean_postgres_username}}:{{bazean_postgres_password}}@{{subdomain}}.bazean.com:5432/{{database}}
+    description: 'Production history for all wells by operator named in user parameter ticker in a user parameter given state.'
+    driver: intake_sql.intake_sql.SQLSource
+    metadata: {}
+    parameters:
+      bazean_postgres_username:
+        description: "PostgresSQL username for accessing Bazean database"
+        type: str
+        default: "env(BAZEAN_POSTGRES_USERNAME)"
+      bazean_postgres_password:
+        description: "PostgresSQL password for accessing Bazean database"
+        type: str
+        default: "env(BAZEAN_POSTGRES_PASSWORD)"
+      subdomain:
+        description: "Bazean PostgresSQL subdomain name"
+        type: str
+        default: "daytum-server"
+      database:
+        description: "Bazean PostgresSQL database name"
+        type: str
+        default: "daytum"
+      schema:
+        description: "Bazean PostgresSQL database schema"
+        type: str
+        default: "public"
+      state:
+        description: "State to query production"
+        type: str
+        allowed: ['OH', 'MI', 'WV', 'CA', 'ND', 'BC', 'KS', 'MT', 'UT', 'PA', 'AR', 'LA', 'WY', 'OK', 'TX', 'CO', 'NM', 'GM']
+      ticker:
+        description: "Operator stock ticker"
+        type: str
+      limit:
+        description: "Query limit"
+        type: int
+        default: 9223372036854775807

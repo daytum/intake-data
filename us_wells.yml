@@ -14,7 +14,7 @@
 sources:
   tickers_by_state:
     args:
-      sql_expr: SELECT parent_ticker FROM {{schema}}.well_all WHERE state='{{state}}' LIMIT {{limit}}
+      sql_expr: SELECT DISTINCT parent_ticker FROM {{schema}}.well_all WHERE state='{{state}}' AND parent_ticker IS NOT NULL ORDER BY parent_ticker LIMIT {{limit}}
       uri: postgresql://{{bazean_postgres_username}}:{{bazean_postgres_password}}@{{subdomain}}.bazean.com:5432/{{database}}
     description: 'A list of all operators in a given state listed by stock ticker'
     driver: intake_sql.intake_sql.SQLSource
