@@ -22,7 +22,7 @@ setup(
     packages=find_packages(),
     package_data={'': ['*.yaml']},
     include_package_data=True,
-    install_requires=['intake>=0.5.5', 'intake-sql', 'psycopg2'],
+    install_requires=['intake>=0.5.5', 'intake-sql', 'psycopg2-binary'],
     zip_safe=False,
     entry_points={
         'intake.catalogs': [
