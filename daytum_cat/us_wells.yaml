@@ -44,6 +44,7 @@ sources:
         description: "State to query tickers"
         type: str
         allowed: ['OH', 'MI', 'WV', 'CA', 'ND', 'BC', 'KS', 'MT', 'UT', 'PA', 'AR', 'LA', 'WY', 'OK', 'TX', 'CO', 'NM', 'GM']
+        default: "NM"
       limit:
         description: "Query limit"
         type: int

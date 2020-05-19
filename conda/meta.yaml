@@ -3,11 +3,11 @@
 
 package:
   version: {{ version }}
-  name: 'daytum-intake-data'
+  name: 'data'
 
 source:
   git_rev: v{{ version }}
-  git_url: https://github.com/daytum/daytum-intake-data
+  git_url: https://github.com/daytum/intake-data
 
 build:
   number: 0
