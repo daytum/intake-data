@@ -23,15 +23,6 @@ petrophysical = intake.open_catalog(os.path.join(here, 'petrophysical.yaml'))
 siesmic = intake.open_catalog(os.path.join(here, 'siesmic.yaml'))
 
 # register data sources
-# tickers_by_state = wells.tickers_by_state
-# well_location_by_ticker_and_state = wells.well_location_by_ticker_and_state
-# well_location_by_api = wells.well_location_by_api
-# well_columns = wells.well_columns
-# production_by_state = production.production_by_state
-# production_by_api = production.production_by_api
-# production_columns = production.production_columns()
-# apis_with_production_data_by_state = production.apis_with_production_data_by_state
-# production_by_ticker_and_state = production.production_by_ticker_and_state
 AI_grid = siesmic.AI_grid
 poro_perm = petrophysical.poro_perm
 MV_2D_200wells = petrophysical.MV_2D_200wells

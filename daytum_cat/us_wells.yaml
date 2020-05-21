@@ -14,7 +14,7 @@
 sources:
   tickers_by_state:
     args:
-      sql_expr: SELECT DISTINCT parent_ticker FROM {{schema}}.well_all WHERE state='{{state}}' AND parent_ticker IS NOT NULL ORDER BY parent_ticker LIMIT {{limit}}
+      sql_expr: SELECT DISTINCT parent_ticker FROM {{schema}}.{{table}} WHERE state='{{state}}' AND parent_ticker IS NOT NULL ORDER BY parent_ticker LIMIT {{limit}}
       uri: postgresql://{{bazean_postgres_username}}:{{bazean_postgres_password}}@{{subdomain}}.bazean.com:5432/{{database}}
     description: 'A list of all operators in a given state listed by stock ticker'
     driver: intake_sql.intake_sql.SQLSource
@@ -36,6 +36,10 @@ sources:
         description: "Bazean PostgresSQL database name"
         type: str
         default: "daytum"
+      table:
+        description: "Bazean PostgresSQL database table name"
+        type: str
+        default: "well_all"
       schema:
         description: "Bazean PostgresSQL database schema"
         type: str
@@ -51,7 +55,7 @@ sources:
         default: 9223372036854775807
   well_location_by_ticker_and_state:
     args:
-      sql_expr: SELECT api,latitude_surface_hole,longitude_surface_hole FROM {{schema}}.well_all WHERE state='{{state}}' AND parent_ticker='{{ticker}}' LIMIT {{limit}}
+      sql_expr: SELECT api,latitude_surface_hole,longitude_surface_hole FROM {{schema}}.{{table}} WHERE state='{{state}}' AND parent_ticker='{{ticker}}' LIMIT {{limit}}
       uri: postgresql://{{bazean_postgres_username}}:{{bazean_postgres_password}}@{{subdomain}}.bazean.com:5432/{{database}}
     description: 'Latitude and longitude for wells in given state and ticker'
     driver: intake_sql.intake_sql.SQLSource
@@ -73,6 +77,10 @@ sources:
         description: "Bazean PostgresSQL database name"
         type: str
         default: "daytum"
+      table:
+        description: "Bazean PostgresSQL database table name"
+        type: str
+        default: "well_all"
       schema:
         description: "Bazean PostgresSQL database schema"
         type: str
@@ -90,7 +98,7 @@ sources:
         default: 9223372036854775807
   well_location_by_api:
     args:
-      sql_expr: SELECT latitude_surface_hole,longitude_surface_hole FROM {{schema}}.well_all WHERE api='{{api}}' LIMIT {{limit}}
+      sql_expr: SELECT latitude_surface_hole,longitude_surface_hole FROM {{schema}}.{{table}} WHERE api='{{api}}' LIMIT {{limit}}
       uri: postgresql://{{bazean_postgres_username}}:{{bazean_postgres_password}}@{{subdomain}}.bazean.com:5432/{{database}}
     description: 'Latitude and longitude for well with given API number'
     driver: intake_sql.intake_sql.SQLSource
@@ -112,6 +120,10 @@ sources:
         description: "Bazean PostgresSQL database name"
         type: str
         default: "daytum"
+      table:
+        description: "Bazean PostgresSQL database table name"
+        type: str
+        default: "well_all"
       schema:
         description: "Bazean PostgresSQL database schema"
         type: str
@@ -125,7 +137,7 @@ sources:
         default: 9223372036854775807
   well_columns:
     args:
-      sql_expr: SELECT {{columns}} FROM {{schema}}.well_all WHERE {{where}} LIMIT {{limit}}
+      sql_expr: SELECT {{columns}} FROM {{schema}}.{{table}} WHERE {{where}} LIMIT {{limit}}
       uri: postgresql://{{bazean_postgres_username}}:{{bazean_postgres_password}}@{{subdomain}}.bazean.com:5432/{{database}}
     description: 'Generic Postgres query to SELECT columns from table well_all with supplied WHERE statement'
     driver: intake_sql.intake_sql.SQLSource
@@ -147,6 +159,10 @@ sources:
         description: "Bazean PostgresSQL database name"
         type: str
         default: "daytum"
+      table:
+        description: "Bazean PostgresSQL database table name"
+        type: str
+        default: "well_all"
       schema:
         description: "Bazean PostgresSQL database schema"
         type: str

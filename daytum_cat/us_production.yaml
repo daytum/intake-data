@@ -1,4 +1,4 @@
-# Copyright 2019 Daytum
+# Copyright 2019-2020 Daytum
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
 sources:
   production_by_state:
     args:
-      sql_expr: SELECT date,api,volume_oil_formation_bbls,volume_gas_formation_mcf,volume_water_formation_bbls FROM {{schema}}.production_all WHERE state='{{state}}' LIMIT {{limit}}
+      sql_expr: SELECT date,api,volume_oil_formation_bbls,volume_gas_formation_mcf,volume_water_formation_bbls FROM {{schema}}.{{table}} WHERE state='{{state}}' LIMIT {{limit}}
       sql_kwargs:
         parse_dates:
         - date
@@ -39,6 +39,10 @@ sources:
         description: "Bazean PostgresSQL database name"
         type: str
         default: "daytum"
+      table:
+        description: "Bazean PostgresSQL database name"
+        type: str
+        default: "production_all"
       schema:
         description: "Bazean PostgresSQL database schema"
         type: str
@@ -53,7 +57,7 @@ sources:
         default: 9223372036854775807
   production_by_api:
     args:
-      sql_expr: SELECT date,volume_oil_formation_bbls,volume_gas_formation_mcf,volume_water_formation_bbls FROM {{schema}}.production_all WHERE api='{{api}}' LIMIT {{limit}}
+      sql_expr: SELECT date,volume_oil_formation_bbls,volume_gas_formation_mcf,volume_water_formation_bbls FROM {{schema}}.{{table}} WHERE api='{{api}}' LIMIT {{limit}}
       sql_kwargs:
         parse_dates:
         - date
@@ -81,6 +85,10 @@ sources:
         description: "Bazean PostgresSQL database name"
         type: str
         default: "daytum"
+      table:
+        description: "Bazean PostgresSQL database name"
+        type: str
+        default: "production_all"
       schema:
         description: "Bazean PostgresSQL database schema"
         type: str
@@ -94,7 +102,7 @@ sources:
         default: 9223372036854775807
   production_columns:
     args:
-      sql_expr: SELECT {{columns}} FROM {{schema}}.production_all WHERE {{where}} LIMIT {{limit}}
+      sql_expr: SELECT {{columns}} FROM {{schema}}.{{table}} WHERE {{where}} LIMIT {{limit}}
       uri: postgresql://{{bazean_postgres_username}}:{{bazean_postgres_password}}@{{subdomain}}.bazean.com:5432/{{database}}
     description: 'Generic Postgres query to SELECT columns from table production_all with supplied WHERE statement'
     driver: intake_sql.intake_sql.SQLSource
@@ -119,6 +127,10 @@ sources:
         description: "Bazean PostgresSQL database name"
         type: str
         default: "daytum"
+      table:
+        description: "Bazean PostgresSQL database name"
+        type: str
+        default: "production_all"
       schema:
         description: "Bazean PostgresSQL database schema"
         type: str
@@ -136,7 +148,7 @@ sources:
         default: 9223372036854775807
   apis_with_production_data_by_state:
     args:
-      sql_expr: SELECT DISTINCT api FROM {{schema}}.production_all WHERE state='{{state}}' LIMIT {{limit}}
+      sql_expr: SELECT DISTINCT api FROM {{schema}}.{{table}} WHERE state='{{state}}' LIMIT {{limit}}
       uri: postgresql://{{bazean_postgres_username}}:{{bazean_postgres_password}}@{{subdomain}}.bazean.com:5432/{{database}}
     description: 'Distinct APIs selected by state where there is production data in production_all.'
     driver: intake_sql.intake_sql.SQLSource
@@ -158,6 +170,10 @@ sources:
         description: "Bazean PostgresSQL database name"
         type: str
         default: "daytum"
+      table:
+        description: "Bazean PostgresSQL database name"
+        type: str
+        default: "production_all"
       schema:
         description: "Bazean PostgresSQL database schema"
         type: str
@@ -172,7 +188,7 @@ sources:
         default: 9223372036854775807
   production_by_ticker_and_state:
     args:
-      sql_expr: SELECT pa.api,pa.date,pa.volume_oil_formation_bbls,pa.volume_gas_formation_mcf,pa.volume_water_formation_bbls,wa.longitude_surface_hole,wa.latitude_surface_hole FROM {{schema}}.production_all pa LEFT JOIN {{schema}}.well_all wa ON pa.api = wa.api WHERE (wa.state='{{state}}' AND wa.parent_ticker='{{ticker}}') LIMIT {{limit}}
+      sql_expr: SELECT pa.api,pa.date,pa.volume_oil_formation_bbls,pa.volume_gas_formation_mcf,pa.volume_water_formation_bbls,wa.longitude_surface_hole,wa.latitude_surface_hole FROM {{schema}}.{{production_table}} pa LEFT JOIN {{schema}}.{{well_table}} wa ON pa.api = wa.api WHERE (wa.state='{{state}}' AND wa.parent_ticker='{{ticker}}') LIMIT {{limit}}
       sql_kwargs:
         parse_dates:
         - date
@@ -197,6 +213,14 @@ sources:
         description: "Bazean PostgresSQL database name"
         type: str
         default: "daytum"
+      production_table:
+        description: "Bazean PostgresSQL database production table name"
+        type: str
+        default: "production_all"
+      well_table:
+        description: "Bazean PostgresSQL database well table name"
+        type: str
+        default: "well_all"
       schema:
         description: "Bazean PostgresSQL database schema"
         type: str
