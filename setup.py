@@ -15,10 +15,18 @@
 # limitations under the License.
 from setuptools import setup, find_packages
 
+with open("README.md", "r") as fh:
+    long_description = fh.read()
+
 setup(
-    name='daytum-data',
+    name='daytum_data',
     version='0.1.0',
+    author="John T. Foster",
+    author_email="john@daytum.io",
     description="Intake data package for Daytum classes",
+    long_description=long_description,
+    long_description_content_type="text/markdown",
+    url="https://github.com/daytum/intake-data",
     packages=find_packages(),
     package_data={'': ['*.yaml']},
     include_package_data=True,
