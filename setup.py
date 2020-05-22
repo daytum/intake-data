@@ -19,8 +19,8 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(
-    name='daytum_data',
-    version='0.1.0',
+    name='daytum-data',
+    version='0.1.5',
     author="John T. Foster",
     author_email="john@daytum.io",
     description="Intake data package for Daytum classes",
