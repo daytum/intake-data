@@ -20,7 +20,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='daytum-data',
-    version='0.1.5',
+    version='0.2.0',
     author="John T. Foster",
     author_email="john@daytum.io",
     description="Intake data package for Daytum classes",
@@ -46,6 +46,8 @@ setup(
             'sample_data_MV_biased=daytum_cat:sample_data_MV_biased',
             'sample_data=daytum_cat:sample_data',
             'porosity_1D=daytum_cat:porosity_1D'
+            'nonlinear_facies_v1=daytum_cat:nonlinear_facies_v1'
+            'nonlinear_facies_v2=daytum_cat:nonlinear_facies_v2'
         ]
     }
 )

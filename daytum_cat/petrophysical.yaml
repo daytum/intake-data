@@ -95,3 +95,15 @@ sources:
     description: 'Clone of GeostatsGuys 1D_Porosity.csv'
     driver: intake.source.csv.CSVSource
     metadata: {}
+  nonlinear_facies_v1:
+    args:
+      urlpath: '{{ CATALOG_DIR }}/data/nonlinear_facies_v1.csv' 
+    description: 'Clone of GeostatsGuys nonlinear_facies_v1.csv'
+    driver: intake.source.csv.CSVSource
+    metadata: {}
+  nonlinear_facies_v2:
+    args:
+      urlpath: '{{ CwTALOG_DIR }}/data/nonlinear_facies_v2.csv' 
+    description: 'Clone of GeostatsGuys nonlinear_facies_v2.csv'
+    driver: intake.source.csv.CSVSource
+    metadata: {}
