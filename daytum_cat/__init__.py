@@ -31,3 +31,5 @@ sample_data_biased = petrophysical.sample_data_biased
 sample_data_MV_biased = petrophysical.sample_data_MV_biased
 sample_data = petrophysical.sample_data
 porosity_1D = petrophysical.porosity_1D
+nonlinear_facies_v1 = petrophysical.nonlinear_facies_v1
+nonlinear_facies_v2 = petrophysical.nonlinear_facies_v2
