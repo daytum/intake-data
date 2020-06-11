@@ -20,7 +20,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='daytum-data',
-    version='0.2.2',
+    version='0.2.3',
     author="John T. Foster",
     author_email="john@daytum.io",
     description="Intake data package for Daytum classes",
@@ -42,6 +42,7 @@ setup(
             'poro_perm=daytum_cat:poro_perm',
             'MV_2D_200wells=daytum_cat:MV_2D_200wells',
             'unconv_MV=daytum_cat:unconv_MV',
+            'unconv_MV_v4=daytum_cat:unconv_MV_v4',
             'sample_data_biased=daytum_cat:sample_data_biased',
             'sample_data_MV_biased=daytum_cat:sample_data_MV_biased',
             'sample_data=daytum_cat:sample_data',
