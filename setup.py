@@ -46,6 +46,7 @@ setup(
             'sample_data_biased=daytum_cat:sample_data_biased',
             'sample_data_MV_biased=daytum_cat:sample_data_MV_biased',
             'sample_data=daytum_cat:sample_data',
+            'sample_data_12=daytum_cat:sample_data_12',
             'porosity_1D=daytum_cat:porosity_1D',
             'nonlinear_facies_v1=daytum_cat:nonlinear_facies_v1',
             'nonlinear_facies_v2=daytum_cat:nonlinear_facies_v2'
