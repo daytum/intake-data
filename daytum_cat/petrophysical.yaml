@@ -1,4 +1,4 @@
-# Copyright 2019-2020 Daytum
+# Copyright 2019-2021 Daytum
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@ sources:
       urlpath: '{{ CATALOG_DIR }}/data/poro_perm.csv' 
     description: 'Porosity and permeability from samples'
     driver: intake.source.csv.CSVSource
+    container: dataframe
     metadata: 
       fields:
           porosity:
@@ -36,6 +37,7 @@ sources:
       urlpath: '{{ CATALOG_DIR }}/data/2D_MV_200wells.csv' 
     description: 'Facies threshold, porosity and permeability from 200 samples'
     driver: intake.source.csv.CSVSource
+    container: dataframe
     metadata: 
       fields:
           facies_threshold_0.3:
@@ -51,59 +53,83 @@ sources:
     args:
       urlpath: '{{ CATALOG_DIR }}/data/unconv_MV.csv' 
     description: 'Multivariate data from 1000 wells'
+    container: dataframe
     driver: intake.source.csv.CSVSource
     metadata: {}
   unconv_MV_v4:
     args:
       urlpath: '{{ CATALOG_DIR }}/data/unconv_MV_v4.csv' 
     description: 'Clone of GeostatsGuys unconv_MV_v4 dataset'
+    container: dataframe
     driver: intake.source.csv.CSVSource
     metadata: {}
   Density_Por_data:
     args:
       urlpath: '{{ CATALOG_DIR }}/data/Density_Por_data.csv' 
     description: 'Density and porosity data from 105 wells'
+    container: dataframe
     driver: intake.source.csv.CSVSource
     metadata: {}
   sample_data_biased:
     args:
       urlpath: '{{ CATALOG_DIR }}/data/sample_data_biased.csv' 
     description: ''
+    container: dataframe
     driver: intake.source.csv.CSVSource
     metadata: {}
   sample_data_MV_biased:
     args:
       urlpath: '{{ CATALOG_DIR }}/data/sample_data_MV_biased.csv' 
     description: 'Clone of GeostatsGuys sample_data_MV_biased'
+    container: dataframe
     driver: intake.source.csv.CSVSource
     metadata: {}
   sample_data:
     args:
       urlpath: '{{ CATALOG_DIR }}/data/sample_data.csv' 
     description: 'Clone of GeostatsGuys sample_data'
+    container: dataframe
     driver: intake.source.csv.CSVSource
     metadata: {}
   sample_data_12:
     args:
       urlpath: '{{ CATALOG_DIR }}/data/sample_data_12.csv' 
     description: 'Clone of GeostatsGuys 12_sample_data.csv'
+    container: dataframe
     driver: intake.source.csv.CSVSource
     metadata: {}
   porosity_1D:
     args:
       urlpath: '{{ CATALOG_DIR }}/data/1D_Porosity.csv' 
     description: 'Clone of GeostatsGuys 1D_Porosity.csv'
+    container: dataframe
     driver: intake.source.csv.CSVSource
     metadata: {}
   nonlinear_facies_v1:
     args:
       urlpath: '{{ CATALOG_DIR }}/data/nonlinear_facies_v1.csv' 
     description: 'Clone of GeostatsGuys nonlinear_facies_v1.csv'
+    container: dataframe
     driver: intake.source.csv.CSVSource
     metadata: {}
   nonlinear_facies_v2:
     args:
       urlpath: '{{ CATALOG_DIR }}/data/nonlinear_facies_v2.csv' 
     description: 'Clone of GeostatsGuys nonlinear_facies_v2.csv'
+    container: dataframe
+    driver: intake.source.csv.CSVSource
+    metadata: {}
+  random_parabola:
+    args:
+      urlpath: '{{ CATALOG_DIR }}/data/random_parabola.csv' 
+    description: 'Clone of GeostatsGuys random_parabola.csv'
+    container: dataframe
+    driver: intake.source.csv.CSVSource
+    metadata: {}
+  stochastic_poro_perm:
+    args:
+      urlpath: '{{ CATALOG_DIR }}/data/stochastic_poro_perm.csv' 
+    description: 'Clone of GeostatsGuys stochastic_poro_perm.csv'
+    container: dataframe
     driver: intake.source.csv.CSVSource
     metadata: {}

@@ -35,3 +35,5 @@ sample_data_12 = petrophysical.sample_data_12
 porosity_1D = petrophysical.porosity_1D
 nonlinear_facies_v1 = petrophysical.nonlinear_facies_v1
 nonlinear_facies_v2 = petrophysical.nonlinear_facies_v2
+random_parabola = petrophysical.random_parabola
+stochastic_poro_perm = petrophysical.stochastic_poro_perm
