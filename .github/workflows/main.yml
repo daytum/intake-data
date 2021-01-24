@@ -9,14 +9,11 @@ jobs:
       - uses: mamba-org/provision-with-micromamba@main
         with:
           environment-file: environment.yml
-      - name: Install package
-        run: >-
-          python -m
-          pip install
-          build
-          --user
+      - name: Install
+        run: |
+          python -m pip install build --user
       - name: Test
-        run: >-
+        run: |
           python test.py
      - name: Build a binary wheel and a source tarball
        run: >-
