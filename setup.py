@@ -49,8 +49,8 @@ setup(
             'sample_data_12=daytum_cat:sample_data_12',
             'porosity_1D=daytum_cat:porosity_1D',
             'nonlinear_facies_v1=daytum_cat:nonlinear_facies_v1',
-            'nonlinear_facies_v2=daytum_cat:nonlinear_facies_v2'
-            'random_parabola=daytum_cat:random_parabola'
+            'nonlinear_facies_v2=daytum_cat:nonlinear_facies_v2',
+            'random_parabola=daytum_cat:random_parabola',
             'stochastic_poro_perm=daytum_cat:stochastic_poro_perm'
         ]
     }
