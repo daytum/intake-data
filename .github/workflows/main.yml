@@ -1,5 +1,8 @@
 name: Publish Python 🐍 distribution 📦 to PyPI
 on: push
+env:
+    BAZEAN_POSTGRES_USERNAME: ${{ secrets.BAZEAN_POSTGRES_USERNAME }}
+    BAZEAN_POSTGRES_PASSWORD: ${{ secrets.BAZEAN_POSTGRES_PASSWORD }}
 
 jobs:
   mamba:
