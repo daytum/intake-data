@@ -56,6 +56,13 @@ sources:
     container: dataframe
     driver: intake.source.csv.CSVSource
     metadata: {}
+  unconv_MV_v2:
+    args:
+      urlpath: '{{ CATALOG_DIR }}/data/unconv_MV_v2.csv' 
+    description: 'Clone of GeostatsGuys unconv_MV_v2 dataset'
+    container: dataframe
+    driver: intake.source.csv.CSVSource
+    metadata: {}
   unconv_MV_v4:
     args:
       urlpath: '{{ CATALOG_DIR }}/data/unconv_MV_v4.csv' 
