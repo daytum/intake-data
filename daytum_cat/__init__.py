@@ -27,6 +27,7 @@ AI_grid = siesmic.AI_grid
 poro_perm = petrophysical.poro_perm
 MV_2D_200wells = petrophysical.MV_2D_200wells
 unconv_MV = petrophysical.unconv_MV
+unconv_MV_v2 = petrophysical.unconv_MV_v2
 unconv_MV_v4 = petrophysical.unconv_MV_v4
 sample_data_biased = petrophysical.sample_data_biased
 sample_data_MV_biased = petrophysical.sample_data_MV_biased
