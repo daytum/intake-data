@@ -20,7 +20,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='daytum-data',
-    version='0.2.12',
+    version='0.2.13',
     author="John T. Foster",
     author_email="john@daytum.io",
     description="Intake data package for Daytum classes",
