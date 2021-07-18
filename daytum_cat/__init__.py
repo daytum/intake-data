@@ -38,3 +38,4 @@ nonlinear_facies_v1 = petrophysical.nonlinear_facies_v1
 nonlinear_facies_v2 = petrophysical.nonlinear_facies_v2
 random_parabola = petrophysical.random_parabola
 stochastic_poro_perm = petrophysical.stochastic_poro_perm
+GrainSize_Por = petrophysical.GrainSize_Por

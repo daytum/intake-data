@@ -140,3 +140,10 @@ sources:
     container: dataframe
     driver: intake.source.csv.CSVSource
     metadata: {}
+  GrainSize_Por:
+    args:
+      urlpath: '{{ CATALOG_DIR }}/data/GrainSize_Por.csv' 
+    description: 'Clone of GeostatsGuys GrainSize_Por.csv'
+    container: dataframe
+    driver: intake.source.csv.CSVSource
+    metadata: {}
