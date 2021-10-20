@@ -1,4 +1,4 @@
-# Copyright 2019-2020 Daytum
+# Copyright 2019-2021 Daytum
 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -50,7 +50,6 @@ sources:
       state:
         description: "State to query production"
         type: str
-        allowed: ['OH', 'MI', 'WV', 'CA', 'ND', 'BC', 'KS', 'MT', 'UT', 'PA', 'AR', 'LA', 'WY', 'OK', 'TX', 'CO', 'NM', 'GM']
       limit:
         description: "Query limit"
         type: int
@@ -181,7 +180,6 @@ sources:
       state:
         description: "State to query production"
         type: str
-        allowed: ['OH', 'MI', 'WV', 'CA', 'ND', 'BC', 'KS', 'MT', 'UT', 'PA', 'AR', 'LA', 'WY', 'OK', 'TX', 'CO', 'NM', 'GM']
       limit:
         description: "Query limit"
         type: int
@@ -228,7 +226,6 @@ sources:
       state:
         description: "State to query production"
         type: str
-        allowed: ['OH', 'MI', 'WV', 'CA', 'ND', 'BC', 'KS', 'MT', 'UT', 'PA', 'AR', 'LA', 'WY', 'OK', 'TX', 'CO', 'NM', 'GM']
       ticker:
         description: "Operator stock ticker"
         type: str
@@ -236,3 +233,5 @@ sources:
         description: "Query limit"
         type: int
         default: 9223372036854775807
+
+#allowed: ["OH", "MI", "WV", "CA", "ND", "BC", "KS", "MT", "UT", "PA", "AR", "LA", "WY", "OK", "TX", "CO", "NM", "GM"]
